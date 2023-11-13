@@ -4,9 +4,7 @@
 per avviare:
 ```
     cd frontend
-    npm run android
-    npm run ios (o su mac oppure installare la expo app)
-    npm run web
+    npm run start
 ```
 
 ## Back-end: Express js
