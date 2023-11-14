@@ -1,4 +1,4 @@
-import { Button, View } from "react-native";
+import { View } from "react-native";
 import styles from "../styles";
 import { ClickableRestaurant } from "../components/clickableRestaurant";
 
@@ -7,11 +7,11 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.container}>
 
-            <ClickableRestaurant img_path={require('../../assets/icon.png')} location="LOCATION 1" />
+            <ClickableRestaurant navigation={navigation} img_path={require('../../assets/icon.png')} location="LOCATION 1" />
 
-            <ClickableRestaurant img_path={require('../../assets/icon.png')} location="LOCATION 2" />
+            <ClickableRestaurant navigation={navigation} img_path={require('../../assets/icon.png')} location="LOCATION 2" />
 
-            <ClickableRestaurant img_path={require('../../assets/icon.png')} location="LOCATION 3" />
+            <ClickableRestaurant navigation={navigation} img_path={require('../../assets/icon.png')} location="LOCATION 3" />
 
         </View>
     );
