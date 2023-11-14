@@ -1,47 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useState } from 'react';
-import { Modal } from 'react-native-modal';
-import { HomeScreen } from './assets/homescreen';
-import { styles } from './assets/styles';
 
-const OtherScreen = ({navigation}) => {
-  return (
-    <View style={styles.container}>
-      <Button title="BACK" onPress={()=> navigation.navigate('Home')}/>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import HomeScreen from "./src/screens/HomeScreen";
+import OtherScreen from "./src/screens/OtherScreen";
+import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
+
+import { Text } from 'react-native'
+
 
 export default function App() {
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const toggleModal = () => {
-    setModalVisible(!modalVisible);
-  };
-
-  return (
-    <NavigationContainer>    
-
-        <Stack.Navigator initialRouteName='Home'>
-
-        <Stack.Screen name="Home" component={HomeScreen} 
-        options={{title:'HomePage'}}/>
-
-
-        <Stack.Screen name="Other" component={OtherScreen} options={{title:'OtherPage'}} />
-
-        </Stack.Navigator>
-      
+  const Drawer = createDrawerNavigator();
+  return <NavigationContainer>
+        <Drawer.Navigator initialRouteName='Home' screenOptions={{title: ''}} drawerContent={(props)=>{
+            return (
+                <DrawerContentScrollView {...props}>
+                    <Text>Menù</Text>
+                </DrawerContentScrollView>
+            );
+        }}>
+            <Drawer.Screen name="Home" component={HomeScreen}/>
+            <Drawer.Screen name="Other" component={OtherScreen}/>
+        </Drawer.Navigator>
     </NavigationContainer>
-  );
 }
-
-const Stack = createNativeStackNavigator();
-
-
-
-

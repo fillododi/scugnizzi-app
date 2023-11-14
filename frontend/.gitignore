@@ -34,4 +34,8 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-%ProgramData%/*
+#Windows
+%ProgramData%/
+
+
+.App.js.swp
