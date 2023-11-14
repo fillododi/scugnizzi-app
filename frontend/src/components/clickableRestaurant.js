@@ -3,7 +3,7 @@ import { Pressable, View, Image, Button } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 
-export function ClickabgeRestaurant({ img_path, location }) {
+export function ClickableRestaurant({ img_path, location }) {
     return (
         <Pressable>
             <View style={styles.container}>
