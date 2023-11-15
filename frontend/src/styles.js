@@ -1,6 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
-const styles = StyleSheet.create({
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
+
+export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         backgroundColor: '#fff',
@@ -10,6 +13,10 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 40
     },
+
+})
+
+export const homeScreenStyles = StyleSheet.create({
 
     homescreen: {
         display: 'flex',
@@ -30,7 +37,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0A54C',
         borderColor: '#000',
         borderWidth: 3,
+        width: screenWidth * 2 / 3,
+        height: screenHeight / 4,
     },
 })
 
-export default styles

@@ -1,11 +1,11 @@
 import { View, Image } from "react-native";
-import styles from "../styles";
+import { styles, homeScreenStyles } from "../styles";
 import { ClickableRestaurant } from "../components/clickableRestaurant";
 
 const HomeScreen = ({ navigation }) => {
     return (
 
-        <View style={styles.container}>
+        <View style={homeScreenStyles.homescreen}>
 
             <Image style={{
                 width: 100,

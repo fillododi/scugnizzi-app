@@ -1,6 +1,6 @@
 import { Button, View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import styles from "../styles";
+import { styles, homeScreenStyles } from "../styles";
 
 const RestaurantScreen = ({ route, navigation }) => {
     const { loc } = route.params;

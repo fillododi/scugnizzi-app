@@ -1,6 +1,6 @@
-import styles from "../styles";
+import { styles } from "../styles";
 
-import {View, Text} from "react-native"
+import { View, Text } from "react-native"
 
 const SplashScreen = () => {
     return <View style={styles.container}>

@@ -1,11 +1,11 @@
-import styles from "../styles";
+import { styles } from "../styles";
 
-import {View, Button} from "react-native"
+import { View, Button } from "react-native"
 
-const SignUpScreen = ({route}) => {
-    const {setUserToken} = route.params
+const SignUpScreen = ({ route }) => {
+    const { setUserToken } = route.params
     return <View style={styles.container}>
-        <Button title="Registrati" onPress={()=>setUserToken('dummytoken')}/>
+        <Button title="Registrati" onPress={() => setUserToken('dummytoken')} />
     </View>
 }
 
