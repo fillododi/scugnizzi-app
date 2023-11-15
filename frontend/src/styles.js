@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'column',
         flex: 1,
+        padding: 40
     },
 
     homescreen: {
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
 
     clickableRestaurant: {
         display: 'flex',
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
