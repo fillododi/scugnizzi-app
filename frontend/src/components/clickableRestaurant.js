@@ -1,12 +1,12 @@
 import styles from "../styles";
-import { Pressable, View, Image, Button } from "react-native";
+import { Pressable, View, Image, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 
 export function ClickableRestaurant({ navigation, img_path, location }) {
     return (
-        <Pressable>
-            <View style={styles.container}>
+        <Pressable onPress={() => navigation.navigate('Restaurant', { loc: location })}>
+            <View style={styles.clickableRestaurant}>
                 <Image
                     style={{
                         width: 100,
@@ -17,7 +17,7 @@ export function ClickableRestaurant({ navigation, img_path, location }) {
                         img_path
                     }
                 />
-                <Button title={location} onPress={() => navigation.navigate('Other')} />
+                <Text>{location}</Text>
                 <StatusBar style="auto" />
             </View>
 
