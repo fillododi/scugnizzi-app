@@ -1,7 +1,9 @@
 import { StyleSheet, Dimensions } from "react-native";
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+export const sWidth = Dimensions.get('window').width;
+export const sHeight = Dimensions.get('window').height;
+
+
 
 export const styles = StyleSheet.create({
     container: {
@@ -20,25 +22,27 @@ export const homeScreenStyles = StyleSheet.create({
 
     homescreen: {
         display: 'flex',
+        flexDirection: 'column',
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        flexDirection: 'column',
-        flex: 1,
+        justifyContent: 'space-evenly',
+        height: '100%',
+        width: '100%',
     },
 
 
     clickableRestaurant: {
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         flexDirection: 'column',
-        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
         backgroundColor: '#F0A54C',
         borderColor: '#000',
         borderWidth: 3,
-        width: screenWidth * 2 / 3,
-        height: screenHeight / 4,
+        width: sWidth * 0.8,
+        height: sHeight / 4,
+        borderRadius: 10,
+
     },
 })
 
