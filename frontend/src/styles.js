@@ -37,14 +37,10 @@ export const restaurantScreenStyles = StyleSheet.create({
         borderColor: '#000',
         borderWidth: 3,
         borderRadius: 10,
+        fontSize: 30,
     },
 
-    buttonText: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#000',
-    },
+
 
     textHeader: {
         fontSize: 30,
