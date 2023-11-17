@@ -7,6 +7,7 @@ import SignUpScreen from "./src/screens/SignUpScreen";
 import SignInScreen from "./src/screens/SignInScreen";
 import SplashScreen from "./src/screens/SplashScreen";
 import RestaurantScreen from "./src/screens/RestaurantScreen";
+import BookingScreen from "./src/screens/BookingScreen";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import DrawerMenu from "./src/components/DrawerMenu";
 import { useEffect, useState } from "react";
@@ -47,6 +48,7 @@ export default function App() {
             }}>
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Restaurant" component={RestaurantScreen} />
+            <Drawer.Screen name="Booking" component={BookingScreen} />
             {userToken ?
                 <>
                     <Drawer.Screen name="Profile" component={ProfileScreen} />

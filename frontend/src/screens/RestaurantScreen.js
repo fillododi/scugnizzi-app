@@ -1,14 +1,20 @@
-import { Button, View, Text } from "react-native";
+import { Button, View, Text, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { styles, homeScreenStyles } from "../styles";
+import { restaurantScreenStyles } from "../styles";
+
 
 const RestaurantScreen = ({ route, navigation }) => {
-    const { loc } = route.params;
-    return <View style={styles.container}>
-        <Text>{loc}</Text>
-        <Button title="BACK" onPress={() => navigation.navigate('Home')} />
+    const { name } = route.params;
+    return <View style={restaurantScreenStyles.restaurantscreen}>
+        <Text style={restaurantScreenStyles.textHeader}>{name}</Text>
+        <Pressable onPress={() => navigation.navigate('Booking', { nome_sede: name })} style={restaurantScreenStyles.bookingButton}>
+            <Text style={restaurantScreenStyles.buttonText}>Prenota</Text>
+        </Pressable>
+        <Button title="ASPORTO" onPress={() => navigation.navigate('Home')} style={restaurantScreenStyles.bookingButton} />
+        <Button title="DOMICILIO" onPress={() => navigation.navigate('Home')} style={restaurantScreenStyles.bookingButton} />
+        <Button title="HOME" onPress={() => navigation.navigate('Home')} style={restaurantScreenStyles.bookingButton} />
         <StatusBar style="auto" />
-    </View>
+    </View >
 }
 
 export default RestaurantScreen;

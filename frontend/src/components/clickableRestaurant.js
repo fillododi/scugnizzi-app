@@ -3,9 +3,9 @@ import { Pressable, View, Image, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 
-export function ClickableRestaurant({ navigation, img_path, location }) {
+export function ClickableRestaurant({ navigation, img_path, location, nome_sede }) {
     return (
-        <Pressable onPress={() => navigation.navigate('Restaurant', { loc: location })}>
+        <Pressable onPress={() => navigation.navigate('Restaurant', { name: nome_sede })}>
             <View style={homeScreenStyles.clickableRestaurant}>
                 <Image
                     style={{

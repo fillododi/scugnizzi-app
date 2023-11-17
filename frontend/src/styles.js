@@ -18,6 +18,47 @@ export const styles = StyleSheet.create({
 
 })
 
+export const restaurantScreenStyles = StyleSheet.create({
+    restaurantscreen: {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        height: '100%',
+        width: '100%',
+    },
+
+    bookingButton: {
+        display: 'flex',
+        backgroundColor: 'orange',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: '#000',
+        borderWidth: 3,
+        borderRadius: 10,
+    },
+
+    buttonText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#000',
+    },
+
+    textHeader: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#000',
+        backgroundColor: '#F0A54C',
+        borderBottomColor: '#000',
+        borderBottomWidth: 3,
+        borderRadius: 10,
+    }
+
+})
+
 export const homeScreenStyles = StyleSheet.create({
 
     homescreen: {
