@@ -1,8 +1,9 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, ScrollView } from "react-native";
 import { styles } from "../styles";
 import { Calendar } from "react-native-calendars";
 import { useState } from "react";
 import NewButton from "../components/NewButton";
+import { VirtualizedList } from "react-native-web";
 
 
 let now = new Date();
@@ -21,6 +22,7 @@ const BookingScreen = ({ route, navigation }) => {
                 flexDirection: 'column',
                 backgroundColor: '#F6C066',
                 height: '100vh',
+                flex: 1,
             }
         }>
             <Calendar
@@ -37,7 +39,7 @@ const BookingScreen = ({ route, navigation }) => {
                     alignItems: 'center',
                     display: 'flex',
                     flexDirection: 'column',
-                    flex: 1,
+                    flex: 0.15,
                     justifyContent: 'center',
 
 
@@ -70,30 +72,37 @@ const TimePicker = ({ selectedDay }) => {
         }
 
         return (
-            <View style={{
-                height: '50%',
-                borderColor: '#F6C066',
-            }}>
+            <View style={{ display: 'flex', flex: 1 }}>
+
                 <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold' }}>Seleziona un orario:</Text>
-                {possibleTimes.map((time) => {
-                    return (
-                        <NewButton title={time} style={
-                            {
-                                backgroundColor: '#D32222',
-                                borderColor: '#000',
-                                borderWidth: 1,
-                                alignItems: 'center',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                flex: 1,
-                                justifyContent: 'center',
+                <ScrollView style={{
+                    backgroundColor: '#F6C066',
 
+                }}>
+
+
+                    {possibleTimes.map((time) => {
+                        return (
+                            <NewButton title={time} style={
+                                {
+                                    backgroundColor: '#D32222',
+                                    borderColor: '#000',
+                                    borderWidth: 1,
+                                    alignItems: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    //flex: 1,
+                                    justifyContent: 'center',
+                                    minHeight: 50,
+                                    width: '80%',
+                                    marginLeft: '10%',
+
+                                }
                             }
-                        }
-
-                        />
-                    );
-                })}
+                            />
+                        );
+                    })}
+                </ScrollView >
             </View>
         );
     } else return (

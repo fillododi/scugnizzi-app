@@ -4,6 +4,7 @@ const NewButton = ({ title, onPress, style = {
     backgroundColor: 'cyan',
     borderColor: '#000',
     borderWidth: 1,
+    borderRadius: 10,
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
