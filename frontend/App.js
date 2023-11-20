@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
-import { Image } from 'react-native';
 import HomeScreen from "./src/screens/HomeScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
@@ -9,6 +8,7 @@ import SplashScreen from "./src/screens/SplashScreen";
 import ThanksForBooking from './src/screens/ThanksForBooking';
 import RestaurantScreen from "./src/screens/RestaurantScreen";
 import BookingScreen from "./src/screens/BookingScreen";
+import TakeOut from "./src/screens/TakeOutScreen";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import DrawerMenu from "./src/components/DrawerMenu";
 import { useEffect, useState } from "react";
@@ -51,6 +51,9 @@ export default function App() {
             <Drawer.Screen name="Restaurant" component={RestaurantScreen} />
             <Drawer.Screen name="Booking" component={BookingScreen} />
             <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
+
+            <Drawer.Screen name="TakeOut" component={TakeOut} />
+
             {userToken ?
                 <>
                     <Drawer.Screen name="Profile" component={ProfileScreen} />

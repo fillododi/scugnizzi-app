@@ -6,3 +6,8 @@ export const restaurant_img = {
 }
 
 export const logo_img = require('../assets/img/logonobg.png');
+
+export const arrow_img = {
+    up: require('../assets/img/uparrow.png'),
+    down: require('../assets/img/downarrow.png')
+}

@@ -1,9 +1,7 @@
 import { View, Text, Button, ScrollView } from "react-native";
-import { styles } from "../styles";
 import { Calendar } from "react-native-calendars";
 import { useState } from "react";
 import NewButton from "../components/NewButton";
-import { VirtualizedList } from "react-native-web";
 
 
 let now = new Date();
@@ -30,7 +28,7 @@ const BookingScreen = ({ route, navigation }) => {
                 markedDates={{ [selectedDay]: { selected: true, selectedColor: '#F0A54C' } }}
                 minDate={today}
             />
-            <TimePicker selectedDay={selectedDay} />
+            <TimePicker selectedDay={selectedDay} navigation={navigation} nome_sede={nome_sede} />
             <NewButton title="BACK" onPress={() => { navigation.navigate('Restaurant', { name: nome_sede }); setSelectedDay(null) }}
                 style={{
                     backgroundColor: '#F6C066',
@@ -52,7 +50,7 @@ const BookingScreen = ({ route, navigation }) => {
 export default BookingScreen;
 
 
-const TimePicker = ({ selectedDay }) => {
+const TimePicker = ({ selectedDay, navigation, nome_sede }) => {
     if (selectedDay != null) {
 
 
@@ -99,7 +97,7 @@ const TimePicker = ({ selectedDay }) => {
 
                                 }
                             }
-                            />
+                                onPress={() => navigation.navigate('ThanksForBooking', { where: nome_sede, when: time })} />
                         );
                     })}
                 </ScrollView >
