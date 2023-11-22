@@ -1,29 +1,28 @@
 import { Pressable, View, Text, Image } from "react-native";
-import { useState } from "react";
-import { arrow_img, menu_img } from "../images";
-import ItemCard from "./ItemCard";
+import { useState, useEffect } from "react";
+import { arrow_img } from "../images";
 
-const ExpandableCard = ({ nome, type, style = {
+const ExpandableCard = ({ children, nome, style = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderColor: '#000',
     borderWidth: 2,
     borderRadius: 10,
-
+    alignItems: 'center'
 }
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [arrowImage, setArrowImage] = useState(arrow_img.down);
+
+    useEffect(() => {
+        setArrowImage(isExpanded ? arrow_img.down : arrow_img.up);
+    }, [isExpanded]);
+
     return (
         <View>
             <Pressable onPress={() => {
-                setIsExpanded(!isExpanded);
-                if (isExpanded == false) {
-                    setArrowImage(arrow_img.down);
-                } else {
-                    setArrowImage(arrow_img.up);
-                }
+                setIsExpanded(prev => !prev);
             }}>
 
                 <View style={style}>
@@ -32,11 +31,7 @@ const ExpandableCard = ({ nome, type, style = {
                 </View>
             </Pressable>
             {
-                isExpanded && type == 'pizze' ?
-                    <View>
-                        <ItemCard name="Pizza Margherita" image={menu_img.margherita} description="Pomodoro, mozzarella" price="5" />
-                    </View>
-                    : null
+                isExpanded && children.map(child => child)
             }
         </View>
 

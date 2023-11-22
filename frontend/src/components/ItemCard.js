@@ -11,6 +11,7 @@ const ItemCard = ({ name, image, description, price }) => {
             borderWidth: 1,
             display: 'flex',
             flexDirection: 'row',
+            borderRadius: 20,
         }}>
             <Image source={image} style={{
                 width: 100,
