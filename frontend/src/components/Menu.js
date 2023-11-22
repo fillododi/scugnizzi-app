@@ -10,7 +10,7 @@ const Menu = () => {
     return (
         <View>
             <Text>Menu</Text>
-            <ExpandableCard nome="Pizze" />
+            <ExpandableCard nome="Pizze" type="pizze" />
             <ExpandableCard nome="Birre" />
             <ExpandableCard nome="Vini" />
 

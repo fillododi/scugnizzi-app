@@ -11,3 +11,7 @@ export const arrow_img = {
     up: require('../assets/img/uparrow.png'),
     down: require('../assets/img/downarrow.png')
 }
+
+export const menu_img = {
+    margherita: require('../assets/img/margherita.jpg'),
+}
