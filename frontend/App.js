@@ -8,6 +8,7 @@ import SplashScreen from "./src/screens/SplashScreen";
 import ThanksForBooking from './src/screens/ThanksForBooking';
 import RestaurantScreen from "./src/screens/RestaurantScreen";
 import BookingScreen from "./src/screens/BookingScreen";
+import DeliveryScreen from "./src/screens/DeliveryScreen";
 import TakeOut from "./src/screens/TakeOutScreen";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import DrawerMenu from "./src/components/DrawerMenu";
@@ -53,6 +54,7 @@ export default function App() {
             <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
 
             <Drawer.Screen name="TakeOut" component={TakeOut} />
+            <Drawer.Screen name="Delivery" component={DeliveryScreen} />
 
             {userToken ?
                 <>

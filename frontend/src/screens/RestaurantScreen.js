@@ -12,7 +12,7 @@ const RestaurantScreen = ({ route, navigation }) => {
 
 
         <NewButton title="ASPORTO" onPress={() => navigation.navigate('TakeOut', { nome_sede: name })} style={restaurantScreenStyles.bookingButton} />
-        <NewButton title="DOMICILIO" onPress={() => navigation.navigate('Home')} style={restaurantScreenStyles.bookingButton} />
+        <NewButton title="DOMICILIO" onPress={() => navigation.navigate('Delivery', { nome_sede: name })} style={restaurantScreenStyles.bookingButton} />
         <NewButton title="HOME" onPress={() => navigation.navigate('Home')} style={restaurantScreenStyles.bookingButton} />
         <StatusBar style="auto" />
     </View >
