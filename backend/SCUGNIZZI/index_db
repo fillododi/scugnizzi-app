@@ -1,0 +1,105 @@
+
+CREATE ROLE db_admin;
+GRANT ALL PRIVILEGES ON DATABASE db TO db_admin;
+GRANT db_admin TO admin_user;
+
+--Tabella Madre
+CREATE TABLE Mother (
+    AdminID INT PRIMARY KEY,
+    RestID INT PRIMARY KEY,
+    FirstName NVARCHAR(255),
+    LastName NVARCHAR(255),
+    admin_user NVARCHAR(255),
+    LoggedIn DATETIME,
+    LoggedOut DATETIME
+);
+
+--Ristoranti 
+CREATE TABLE Ristoranti(
+    RestID INT PRIMARY KEY,
+    RestName NVARCHAR(255),
+    AdminIDs INT PRIMARY KEY, -- dinamica, in base al ristorante di log in.
+    Address NVARCHAR(255),
+    City NVARCHAR(255),
+    ZIP NVARCHAR(255)
+);
+
+--Planimetrie
+CREATE TABLE Planimetrie(
+    PlantID INT PRIMARY KEY,
+    RestID INT PRIMARY KEY,
+    Seats_Numb INT
+);
+
+CREATE TABLE Common_User(
+    UserID INT PRIMARY KEY,
+    Name NVARCHAR(255),
+    Surname NVARCHAR(255),
+    Address NVARCHAR(255),
+    City NVARCHAR(255),
+    ZIP NVARCHAR(255)
+    TakeAwayIDs INT PRIMARY KEY, -- rivedere
+    ResIDs INT PRIMARY KEY
+);
+
+CREATE TABLE Reservations(
+    ResID INT PRIMARY KEY 
+    UserID INT PRIMARY KEY,
+    AdminID INT PRIMARY KEY,
+    RestID INT PRIMARY KEY,
+    Occurred DATETIME,
+    DateFor DATETIME,
+    Party INT,
+    Frequent BOOLEAN,
+    Accepted BOOLEAN
+);
+
+CREATE TABLE Take_Away(
+    TakeAwID INT PRIMARY KEY 
+    UserID INT PRIMARY KEY,
+    AdminID INT PRIMARY KEY,
+    RestID INT PRIMARY KEY,
+    Occurred DATETIME,
+    DateFor DATETIME,
+    ProdID INT PRIMARY KEY,
+    Addition NVARCHAR(255),
+    Prod_Price DECIMAL(6,2),
+    Add_Price DECIMAL(6,2),
+    Tot_Price DECIMAL(6,2)
+    Accepted BOOLEAN
+);
+
+CREATE TABLE Macro_Prodotti(
+    ProdID INT PRIMARY KEY,
+    AdditionID INT PRIMARY KEY, 
+    Prod_Name NVARCHAR(255),
+    Allergeni NVARCHAR(255),
+    RestID INT PRIMARY KEY,
+    Prod_Price DECIMAL(6,2),
+    Disponibile BOOLEAN,
+    is_Modifiable BOOLEAN,
+    ET_Preparazione DATETIME -- da valutare possibilità.
+);
+
+CREATE TABLE Mod_Prodotti(
+    ProdID INT PRIMARY KEY,
+    AdditionID INT PRIMARY KEY, 
+    Add_Name NVARCHAR(255),
+    Allergeni NVARCHAR(255),
+    RestID INT PRIMARY KEY,
+    Prod_Price DECIMAL(6,2),
+    Disponibile BOOLEAN,
+    Addizionale DECIMAL(6,2)
+);
+
+CREATE TABLE Scontrino(
+    UserID INT PRIMARY KEY,
+    ProdID INT PRIMARY KEY,
+    AdditionID INT PRIMARY KEY, 
+    RestID INT PRIMARY KEY,
+    RestName NVARCHAR(255)
+    Add_Name NVARCHAR(255),
+    Prod_Name NVARCHAR(255),
+    Prod_Price DECIMAL(6,2),
+    Add_Prie DECIMAL(6,2)
+);
