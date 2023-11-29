@@ -2,21 +2,21 @@ CREATE ROLE db_admin;
 GRANT ALL PRIVILEGES ON DATABASE db TO db_admin;
 GRANT db_admin TO admin_user;
 
-CREATE TABLE Mother (
+CREATE TABLE Admin_Users(
     AdminID INT PRIMARY KEY,  
-    RestID INT,
+    RestaurantID INT,
     FirstName NVARCHAR(255),
     LastName NVARCHAR(255),
-    admin_user NVARCHAR(255),
+    admin_useraname NVARCHAR(255),
     LoggedIn DATETIME,
     LoggedOut DATETIME
 );
 
 
 CREATE TABLE Ristoranti(
-    RestID INT PRIMARY KEY,
-    RestName NVARCHAR(255),
-    AdminIDs INT , 
+    RestaurantID INT PRIMARY KEY,
+    RestaurantName NVARCHAR(255),
+    AdminIDs INT, 
     Address NVARCHAR(255),
     City NVARCHAR(255),
     ZIP NVARCHAR(255),
@@ -24,9 +24,9 @@ CREATE TABLE Ristoranti(
 );
 
 CREATE TABLE Planimetrie(
-    PlantID INT PRIMARY KEY,
-    RestID INT,
-    Seats_Numb INT
+    PlanimetriaID INT PRIMARY KEY,
+    RestaurantID INT,
+    Seats_Number INT
 );
 
 CREATE TABLE Common_User(
@@ -37,14 +37,14 @@ CREATE TABLE Common_User(
     City NVARCHAR(255),
     ZIP NVARCHAR(255),
     TakeAwayIDs INT, 
-    ResIDs INT 
+    ReservationIDs INT 
 );
 
 CREATE TABLE Reservations(
-    ResID INT PRIMARY KEY, 
+    ReservationID INT PRIMARY KEY, 
     UserID INT,
     AdminID INT,
-    RestID INT,
+    RestaurantID INT,
     Occurred DATETIME,
     DateFor DATETIME,
     Party INT,
@@ -53,40 +53,41 @@ CREATE TABLE Reservations(
 );
 
 CREATE TABLE Take_Away(
-    TakeAwID INT PRIMARY KEY,
+    TakeAwayID INT PRIMARY KEY,
     UserID INT,
     AdminID INT,
-    RestID INT,
+    RestaurantID INT,
     Occurred DATETIME,
     DateFor DATETIME,
-    ProdID INT,
+    ProductID INT,
     Addition NVARCHAR(255),
-    Prod_Price DECIMAL(6,2),
-    Add_Price DECIMAL(6,2),
-    Tot_Price DECIMAL(6,2),
-    Accepted BOOLEAN
+    Product_Price DECIMAL(6,2),
+    Addition_Price DECIMAL(6,2),
+    Total_Price DECIMAL(6,2),
+    Accepted BOOLEAN,
+    Delivery BOOLEAN,
+    Addizionale_consegna DECIMAL(6,2)
 );
 
 CREATE TABLE Macro_Prodotti(
-    ProdID INT PRIMARY KEY,
+    ProductID INT PRIMARY KEY,
     AdditionID INT, 
-    Prod_Name NVARCHAR(255),
+    Product_Name NVARCHAR(255),
     Allergeni NVARCHAR(255),
-    RestID INT,
-    Prod_Price DECIMAL(6,2),
+    RestaurantID INT,
+    Product_Price DECIMAL(6,2),
     Disponibile BOOLEAN,
     is_Modifiable BOOLEAN,
-    ET_Preparazione DATETIME 
+    tempo_Preparazione DATETIME 
 );
 
-CREATE TABLE Mod_Prodotti(
+CREATE TABLE Modifica_Prodotti(
     AdditionID INT PRIMARY KEY, 
-    Add_Name NVARCHAR(255),
+    Addition_Name NVARCHAR(255),
     Allergeni NVARCHAR(255),
-    RestID INT,
-    Add_Price DECIMAL(6,2),
+    RestaurantID INT,
+    Addition_Price DECIMAL(6,2),
     Disponibile BOOLEAN,
-    Addizionale DECIMAL(6,2)
 );
 
 
