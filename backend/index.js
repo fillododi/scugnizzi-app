@@ -30,12 +30,12 @@ const pool = mysql.createPool({
 
 //signUp
 app.get('/users', async (req, res) => {
-    const [users] = await pool.query("SELECT * FROM common_user")
+    const [users] = await pool.query("SELECT * FROM Common_User")
     res.json(users) 
 })
 app.post('/users', async (req, res) => {
-    //const [users] = await pool.query("SELECT * FROM common_user")
-    //const newUser = req.body
+    const [users] = await pool.query("SELECT * FROM Common_User")
+    console.log(users)
     console.log(req.body)
     var UserID = req.body.UserID
     var Name = req.body.Name
@@ -45,7 +45,7 @@ app.post('/users', async (req, res) => {
     var ZIP = req.body.ZIP
     var TakeAwayIDs = req.body.TakeAwayIDs
     var ResIDs = req.body.ResIDs
-    const newUser = await pool.query('INSERT INTO common_user VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [UserID, Name, Surname, Address, City, ZIP, TakeAwayIDs, ResIDs])
+    const newUser = await pool.query('INSERT INTO Common_User VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [UserID, Name, Surname, Address, City, ZIP, TakeAwayIDs, ResIDs])
     users.push(newUser)
     res.status(201).send()
     
