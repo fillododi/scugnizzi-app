@@ -4,7 +4,7 @@ GET http://localhost:3000/users
 
 POST http://localhost:3000/users 
 HOST: '127.0.0.1'
-username=root&password=Lorenzo02;
+
 Content-Type: application/json
 {
 	"UserID": 1,
