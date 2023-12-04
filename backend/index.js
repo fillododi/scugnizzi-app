@@ -31,7 +31,7 @@ const pool = mysql.createPool({
 //signUp
 app.get('/users', async (req, res) => {
     const [users] = await pool.query("SELECT * FROM Common_User")
-    res.json(users) 
+    res.json(users)
 })
 app.post('/users', async (req, res) => {
     const [users] = await pool.query("SELECT * FROM Common_User")
@@ -50,6 +50,8 @@ app.post('/users', async (req, res) => {
     res.status(201).send()
     
 })
+
+
 
 
 
