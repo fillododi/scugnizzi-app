@@ -1,13 +1,14 @@
-import store from '../store'
-import {setUserToken} from '../store/actions'
+import {useDispatch} from 'react-redux'
+import {setUserToken} from '../store/authSlice'
 
 import { styles } from "../styles";
 
 import { View, Button } from "react-native"
 
 const SignUpScreen = () => {
+    const dispatch = useDispatch()
     return <View style={styles.container}>
-        <Button title="Registrati" onPress={() => store.dispatch(setUserToken('dummytoken'))} />
+        <Button title="Registrati" onPress={() => dispatch(setUserToken('dummytoken'))} />
     </View>
 }
 
