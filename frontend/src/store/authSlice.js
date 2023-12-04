@@ -7,11 +7,11 @@ export const authSlice = createSlice({
         userToken: null
     },
     reducers: {
-        setUserToken: (state, token) => {
-            state.userToken = token;
+        setUserToken: (state, action) => {
+            state.userToken = action.payload;
         },
-        setIsLoadingAuthData: (state, isLoadingAuthData) => {
-            state.isLoadingAuthData = isLoadingAuthData;
+        setIsLoadingAuthData: (state, action) => {
+            state.isLoadingAuthData = action.payload;
         }
     }
 })

@@ -5,10 +5,10 @@ import { Button, View } from 'react-native'
 
 const DrawerMenu = ({navigation}) => {
     const dispatch = useDispatch()
-    const {userToken} = useSelector((state) => state.auth.value)
+    const {userToken} = useSelector((state) => state.auth)
     return <View style={styles.container}>
         <Button title="Home" onPress={() => navigation.navigate("Home")} />
-        {userToken ?
+        {userToken!= null ?
             <View style={styles.container}>
                 <Button title="Profilo" onPress={() => navigation.navigate("Profile")} />
                 <Button title="Esci" onPress={() => dispatch(setUserToken(null))} />
