@@ -1,4 +1,4 @@
-import { View, Text, Button, ScrollView } from "react-native";
+import {View} from "react-native";
 import { Calendar } from "react-native-calendars";
 import { useState } from "react";
 import NewButton from "../components/NewButton";
@@ -12,19 +12,19 @@ const BookingScreen = ({ route, navigation }) => {
     let dd = now.getDate();
     let mm = now.getMonth() + 1; // Gennaio è 0
     let yyyy = now.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
+    let today = yyyy + '-' + mm + '-' + dd;
     return (
         <View style={
             {
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: '#F6C066',
-                height: '100vh',
+                height: '100%',
                 flex: 1,
             }
         }>
             <Calendar
-                onDayPress={day => { selectedDay == day.dateString ? setSelectedDay(null) : setSelectedDay(day.dateString); }}
+                onDayPress={day => { selectedDay === day.dateString ? setSelectedDay(null) : setSelectedDay(day.dateString); }}
                 markedDates={{ [selectedDay]: { selected: true, selectedColor: '#F0A54C' } }}
                 minDate={today}
             />

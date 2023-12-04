@@ -1,3 +1,7 @@
+import {Provider} from 'react-redux'
+import store from './src/store'
+import {setIsLoadingAuthData, setUserToken} from './src/store/actions'
+
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from "./src/screens/HomeScreen";
@@ -12,13 +16,12 @@ import DeliveryScreen from "./src/screens/DeliveryScreen";
 import TakeOut from "./src/screens/TakeOutScreen";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import DrawerMenu from "./src/components/DrawerMenu";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 
 
 
 export default function App() {
-    const [isLoading, setIsLoading] = useState(true) //loading diventerà false quando si saprà se l'utente è già loggato
-    const [userToken, setUserToken] = useState(null)
+    const {isLoading, userToken} = store.getState()
 
     useEffect(() => {
         (async () => {
@@ -26,9 +29,9 @@ export default function App() {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 2000))
                 const token = null
-                setUserToken(token)
+                store.dispatch(setUserToken(token))
             } finally {
-                setIsLoading(false)
+                store.dispatch(setIsLoadingAuthData(false))
             }
         })();
     }, []) //vede se l'utente è loggato
@@ -38,36 +41,37 @@ export default function App() {
     }
 
     const Drawer = createDrawerNavigator();
-    return <NavigationContainer>
-        <Drawer.Navigator initialRouteName='Home' screenOptions={{ title: '' }}
+    return <Provider store={store}>
+        <NavigationContainer>
+            <Drawer.Navigator initialRouteName='Home' screenOptions={{ title: '' }}
+                drawerContent={(props) => {
+                    return (
+                        <DrawerContentScrollView {...props} >
+                            <DrawerMenu navigation={props.navigation}/>
+                        </DrawerContentScrollView>
+                    );
+                }}>
+                <Drawer.Screen name="Home" component={HomeScreen} />
+                <Drawer.Screen name="Restaurant" component={RestaurantScreen} />
+                <Drawer.Screen name="Booking" component={BookingScreen} />
+                <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
 
-            drawerContent={(props) => {
-                return (
-                    <DrawerContentScrollView {...props} >
-                        <DrawerMenu navigation={props.navigation} loggedIn={userToken ? true : false} setUserToken={setUserToken} />
-                    </DrawerContentScrollView>
-                );
-            }}>
-            <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen name="Restaurant" component={RestaurantScreen} />
-            <Drawer.Screen name="Booking" component={BookingScreen} />
-            <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
+                <Drawer.Screen name="TakeOut" component={TakeOut} />
+                <Drawer.Screen name="Delivery" component={DeliveryScreen} />
 
-            <Drawer.Screen name="TakeOut" component={TakeOut} />
-            <Drawer.Screen name="Delivery" component={DeliveryScreen} />
-
-            {userToken ?
-                <>
-                    <Drawer.Screen name="Profile" component={ProfileScreen} />
-                </>
-                :
-                <>
-                    <Drawer.Screen name="SignIn" component={SignInScreen} initialParams={{ setUserToken }} />
-                    <Drawer.Screen name="SignUp" component={SignUpScreen} initialParams={{ setUserToken }} />
-                </>
-            }
-        </Drawer.Navigator>
-    </NavigationContainer >
+                {userToken ?
+                    <>
+                        <Drawer.Screen name="Profile" component={ProfileScreen} />
+                    </>
+                    :
+                    <>
+                        <Drawer.Screen name="SignIn" component={SignInScreen}/>
+                        <Drawer.Screen name="SignUp" component={SignUpScreen}/>
+                    </>
+                }
+            </Drawer.Navigator>
+        </NavigationContainer >
+    </Provider>
 }
 
 
