@@ -1,6 +1,6 @@
-import {Provider} from 'react-redux'
+import {Provider, useSelector, useDispatch} from 'react-redux'
 import store from './src/store'
-import {setIsLoadingAuthData, setUserToken} from './src/store/actions'
+import {setIsLoadingAuthData, setUserToken} from './src/store/authSlice'
 
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
@@ -21,7 +21,8 @@ import { useEffect} from "react";
 
 
 export default function App() {
-    const {isLoading, userToken} = store.getState()
+    const {isLoading, userToken} = useSelector((state) => state.auth.value)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         (async () => {
@@ -29,9 +30,9 @@ export default function App() {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 2000))
                 const token = null
-                store.dispatch(setUserToken(token))
+                dispatch(setUserToken(token))
             } finally {
-                store.dispatch(setIsLoadingAuthData(false))
+                dispatch(setIsLoadingAuthData(false))
             }
         })();
     }, []) //vede se l'utente è loggato
