@@ -1,11 +1,13 @@
+import store from '../store'
+import {setUserToken} from '../store/actions'
+
 import { styles } from "../styles";
 
 import { View, Button } from "react-native"
 
-const SignUpScreen = ({ route }) => {
-    const { setUserToken } = route.params
+const SignUpScreen = () => {
     return <View style={styles.container}>
-        <Button title="Registrati" onPress={() => setUserToken('dummytoken')} />
+        <Button title="Registrati" onPress={() => store.dispatch(setUserToken('dummytoken'))} />
     </View>
 }
 
