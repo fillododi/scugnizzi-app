@@ -1,4 +1,5 @@
 import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
+import SplashScreen from "../screens/SplashScreen";
 import DrawerMenu from "./DrawerMenu";
 import HomeScreen from "../screens/HomeScreen";
 import RestaurantScreen from "../screens/RestaurantScreen";
@@ -12,8 +13,11 @@ import SignUpScreen from "../screens/SignUpScreen";
 import {NavigationContainer} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+
 import {setIsLoadingAuthData, setUserToken} from "../store/authSlice";
-import SplashScreen from "../screens/SplashScreen";
+import {setLocation} from "../store/locationSlice"
+
+import * as Location from 'expo-location';
 
 const RoutingHandler = () => {
     const {isLoadingAuthData, userToken} = useSelector(state => state.auth)
@@ -31,6 +35,18 @@ const RoutingHandler = () => {
             }
         })();
     }, []) //vede se l'utente è loggato
+
+    useEffect(()=>{
+        (async () => {
+            let permission = await Location.requestForegroundPermissionsAsync()
+            let status = permission.status
+            if(status !== 'granted'){ //se l'utente non accetta i permessi
+                return
+            }
+            let position = await Location.getCurrentPositionAsync({})
+            dispatch(setLocation(position.coords))
+        })()
+    }, []) //geolocalizzazione
 
     if (isLoadingAuthData) {
         return <SplashScreen />
