@@ -36,7 +36,7 @@ const BookingScreen = ({ route, navigation }) => {
                     height: '50%'
                 }} />
             }
-            <NewButton title="BACK" onPress={() => { navigation.navigate('Restaurant', { name: nome_sede }); setSelectedDay(null) }}
+            <NewButton title="BACK" onPress={() => { navigation.navigate('RestaurantSelection', { nextScreen: 'Booking' }); setSelectedDay(null) }}
                 style={{
                     backgroundColor: '#F6C066',
                     borderColor: '#000',

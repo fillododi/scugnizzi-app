@@ -1,25 +1,25 @@
 import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
-import SplashScreen from "../screens/SplashScreen";
-import DrawerMenu from "./DrawerMenu";
-import HomeScreen from "../screens/HomeScreen";
-import RestaurantScreen from "../screens/RestaurantScreen";
-import BookingScreen from "../screens/BookingScreen";
-import ThanksForBooking from "../screens/ThanksForBooking";
-import TakeOut from "../screens/TakeOutScreen";
-import DeliveryScreen from "../screens/DeliveryScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import SignInScreen from "../screens/SignInScreen";
-import SignUpScreen from "../screens/SignUpScreen";
+import SplashScreen from "./screens/SplashScreen";
+import DrawerMenu from "./components/DrawerMenu";
+import RestaurantSelectionScreen from "./screens/RestaurantSelectionScreen";
+import HomeScreen from "./screens/HomeScreen";
+import BookingScreen from "./screens/BookingScreen";
+import ThanksForBooking from "./screens/ThanksForBooking";
+import TakeOut from "./screens/TakeOutScreen";
+import DeliveryScreen from "./screens/DeliveryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import SignInScreen from "./screens/SignInScreen";
+import SignUpScreen from "./screens/SignUpScreen";
 import {NavigationContainer} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import {setIsLoadingAuthData, setUserToken} from "../store/authSlice";
-import {setLocation} from "../store/locationSlice"
+import {setIsLoadingAuthData, setUserToken} from "./store/authSlice";
+import {setLocation} from "./store/locationSlice"
 
 import * as Location from 'expo-location';
 
-const RoutingHandler = () => {
+const Navigator = () => {
     const {isLoadingAuthData, userToken} = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
@@ -62,11 +62,10 @@ const RoutingHandler = () => {
                                   </DrawerContentScrollView>
                               );
                           }}>
+            <Drawer.Screen name="RestaurantSelection" component={RestaurantSelectionScreen} />
             <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen name="Restaurant" component={RestaurantScreen} />
             <Drawer.Screen name="Booking" component={BookingScreen} />
             <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
-
             <Drawer.Screen name="TakeOut" component={TakeOut} />
             <Drawer.Screen name="Delivery" component={DeliveryScreen} />
 
@@ -84,4 +83,4 @@ const RoutingHandler = () => {
     </NavigationContainer >
 }
 
-export default RoutingHandler
+export default Navigator
