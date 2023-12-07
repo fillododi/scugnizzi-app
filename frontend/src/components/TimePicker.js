@@ -1,14 +1,16 @@
 import { View, Text, ScrollView } from 'react-native';
 import NewButton from './NewButton';
+import {useDispatch} from 'react-redux'
+import {setOrderTime} from '../store/orderSlice'
 
-const TimePicker = ({ navigation, nome_sede, now }) => {
-
+const TimePicker = ({ now }) => {
+    const dispatch = useDispatch()
     let possibleTimes = [];
     let h = now.getHours();
     let m = now.getMinutes();
     // get all possible times from now to 23:00 with 30 minutes interval
     for (let i = h; i < 24; i++) {
-        if (i == h) {
+        if (i === h) {
             if (m < 30) {
                 possibleTimes.push(h + ':30');
             }
@@ -46,7 +48,7 @@ const TimePicker = ({ navigation, nome_sede, now }) => {
 
                             }
                         }
-                            onPress={() => navigation.navigate('ThanksForBooking', { where: nome_sede, when: time })} />
+                            onPress={() => dispatch(setOrderTime(time))} />
                     );
                 })}
             </ScrollView >

@@ -3,9 +3,16 @@ import { Calendar } from "react-native-calendars";
 import { useState } from "react";
 import NewButton from "../components/NewButton";
 import TimePicker from "../components/TimePicker";
+import {useEffect} from "react";
+import {useDispatch} from 'react-redux'
+import {createBooking} from '../store/orderSlice'
 
 
 const BookingScreen = ({ route, navigation }) => {
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(createBooking())
+    }, [])
     let now = new Date();
     const [selectedDay, setSelectedDay] = useState(null);
     const { nome_sede } = route.params;
@@ -29,7 +36,10 @@ const BookingScreen = ({ route, navigation }) => {
                 minDate={today}
             />
             {(selectedDay != null) ?
-                <TimePicker navigation={navigation} nome_sede={nome_sede} now={now} />
+                <View>
+                    <TimePicker navigation={navigation} nome_sede={nome_sede} now={now} />
+                    <NewButton title="PRENOTA" onPress={()=>navigation.navigate('ThanksForBooking', {where: nome_sede})}/>
+                </View>
                 :
                 <View style={{
                     backgroundColor: '#F6C066',

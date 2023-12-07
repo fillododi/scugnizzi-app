@@ -2,10 +2,16 @@ import { View, Text } from "react-native";
 import Menu from "../components/Menu";
 import NewButton from "../components/NewButton";
 import TimePicker from "../components/TimePicker";
-
+import {useEffect} from "react";
+import {useDispatch} from 'react-redux'
+import {createTakeoutOrder} from '../store/orderSlice'
 
 const TakeOut = ({ route, navigation }) => {
     const { nome_sede } = route.params;
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(createTakeoutOrder())
+    }, [])
     return (
         <View style={{ height: '100%' }}>
             <Text>Take Out, da modificare, la selezione orario va messa in un altra pagina</Text>

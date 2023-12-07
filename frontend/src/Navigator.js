@@ -18,6 +18,8 @@ import {setIsLoadingAuthData, setUserToken} from "./store/authSlice";
 import {setLocation} from "./store/locationSlice"
 
 import * as Location from 'expo-location';
+import OrdersManagementScreen from "./screens/OrdersManagementScreen";
+import DetailedOrderScreen from "./screens/DetailedOrderScreen";
 
 const Navigator = () => {
     const {isLoadingAuthData, userToken} = useSelector(state => state.auth)
@@ -62,8 +64,8 @@ const Navigator = () => {
                                   </DrawerContentScrollView>
                               );
                           }}>
-            <Drawer.Screen name="RestaurantSelection" component={RestaurantSelectionScreen} />
             <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="RestaurantSelection" component={RestaurantSelectionScreen} />
             <Drawer.Screen name="Booking" component={BookingScreen} />
             <Drawer.Screen name="ThanksForBooking" component={ThanksForBooking} />
             <Drawer.Screen name="TakeOut" component={TakeOut} />
@@ -72,6 +74,8 @@ const Navigator = () => {
             {userToken != null ?
                 <>
                     <Drawer.Screen name="Profile" component={ProfileScreen} />
+                    <Drawer.Screen name="Orders" component={OrdersManagementScreen} />
+                    <Drawer.Screen name="DetailedOrder" component={DetailedOrderScreen} />
                 </>
                 :
                 <>
