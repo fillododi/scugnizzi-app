@@ -20,6 +20,12 @@ const TakeOut = ({ route, navigation }) => {
                 style={{ height: '10%', backgroundColor: '#F6C066', borderColor: '#000', borderWidth: 1, alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', }}
             />
             <TimePicker navigation={navigation} nome_sede={nome_sede} now={new Date()} />
+            <NewButton title="PAGA ORA" onPress={() => { navigation.navigate('ThanksForBooking', {where: nome_sede}) }}
+                       style={{ height: '10%', backgroundColor: '#F6C066', borderColor: '#000', borderWidth: 1, alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', }}
+            />
+            <NewButton title="PAGA IN CASSA" onPress={() => { navigation.navigate('ThanksForBooking', {where: nome_sede}) }}
+                       style={{ height: '10%', backgroundColor: '#F6C066', borderColor: '#000', borderWidth: 1, alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', }}
+            />
         </View>
     );
 }
