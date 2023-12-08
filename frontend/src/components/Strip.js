@@ -6,7 +6,7 @@ const Strip = ({ text }) => {
         width: '100%',
         height: '10%',
         alignItems: 'center',
-        top: '-2%',
+        top: '-3%',
     }}>
 
 
@@ -17,9 +17,11 @@ const Strip = ({ text }) => {
             borderBottomLeftRadius: 0,
             borderBottomRightRadius: 0,
             backgroundColor: '#9E1A1A',
-            height: '60%',
+            height: '30%',
             aspectRatio: 2,
-            borderColor: '#000',
+            borderTopColor: '#000',
+            borderLeftColor: '#000',
+            borderRightColor: '#000',
             borderTopWidth: 3,
             borderLeftWidth: 3,
             borderRightWidth: 3,

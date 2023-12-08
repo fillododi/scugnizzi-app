@@ -1,16 +1,16 @@
 import { View, Image } from "react-native";
 import { homeScreenStyles } from "../styles";
 import { ClickableRestaurant } from "../components/clickableRestaurant";
-import { sHeight, sWidth } from "../styles";
-import { restaurant_img, logo_img } from "../images";
-import {BORGOFORTE_COORDINATES, BUSCOLDO_COORDINATES, MONTANARA_COORDINATES, calculateDistance} from "../utils/location";
-import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import Strip from "../components/Strip";
+import { restaurant_img, margherita_bg } from "../images";
+import { BORGOFORTE_COORDINATES, BUSCOLDO_COORDINATES, MONTANARA_COORDINATES, calculateDistance } from "../utils/location";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 
 const RestaurantSelectionScreen = ({ route, navigation }) => {
     const location = useSelector((state) => state.location)
-    const {nextScreen} = route.params
+    const { nextScreen } = route.params
     const [restaurants, setRestaurants] = useState({
         borgoforte: {
             img_path: restaurant_img.borgoforte,
@@ -32,12 +32,12 @@ const RestaurantSelectionScreen = ({ route, navigation }) => {
         }
     })
 
-    useEffect(()=> {
-        if(location.latitude && location.longitude) {
+    useEffect(() => {
+        if (location.latitude && location.longitude) {
             setRestaurants({
-                borgoforte: {...restaurants.borgoforte, distance: calculateDistance(location, BORGOFORTE_COORDINATES).toFixed(2)},
-                buscoldo: {...restaurants.buscoldo, distance: calculateDistance(location, BUSCOLDO_COORDINATES).toFixed(2)},
-                montanara: {...restaurants.montanara, distance: calculateDistance(location, MONTANARA_COORDINATES).toFixed(2)},
+                borgoforte: { ...restaurants.borgoforte, distance: calculateDistance(location, BORGOFORTE_COORDINATES).toFixed(2) },
+                buscoldo: { ...restaurants.buscoldo, distance: calculateDistance(location, BUSCOLDO_COORDINATES).toFixed(2) },
+                montanara: { ...restaurants.montanara, distance: calculateDistance(location, MONTANARA_COORDINATES).toFixed(2) },
             })
         }
     }, [location])
@@ -46,16 +46,18 @@ const RestaurantSelectionScreen = ({ route, navigation }) => {
         <View style={homeScreenStyles.homescreen}>
 
             <Image style={{
-                width: sWidth,
-                height: sHeight * 0.16,
-                resizeMode: 'contain',
+                width: '100%',
+                height: '20%',
             }}
-                source={logo_img} />
+                source={margherita_bg} />
+
+            <Strip text="SCEGLI LA SEDE" />
+
             {Object.values(restaurants).sort((res1, res2) => {
-                if(res1.distance > res2.distance) {
+                if (res1.distance > res2.distance) {
                     return 1
                 }
-                if(res1.distance < res2.distance) {
+                if (res1.distance < res2.distance) {
                     return -1
                 }
                 return 0

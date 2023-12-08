@@ -62,7 +62,7 @@ export const homeScreenStyles = StyleSheet.create({
     homescreen: {
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: '#fff',
+        backgroundColor: '#D32222',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         height: '100%',
@@ -80,7 +80,6 @@ export const homeScreenStyles = StyleSheet.create({
         borderWidth: 3,
         width: sWidth * 0.8,
         height: sHeight / 4,
-        borderRadius: 10,
 
     },
 })
