@@ -1,4 +1,4 @@
-import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
+import {createDrawerNavigator, DrawerContentScrollView, DrawerToggleButton} from "@react-navigation/drawer";
 import SplashScreen from "./screens/SplashScreen";
 import DrawerMenu from "./components/DrawerMenu";
 import RestaurantSelectionScreen from "./screens/RestaurantSelectionScreen";
@@ -20,6 +20,7 @@ import {setLocation} from "./store/locationSlice"
 import * as Location from 'expo-location';
 import OrdersManagementScreen from "./screens/OrdersManagementScreen";
 import DetailedOrderScreen from "./screens/DetailedOrderScreen";
+import {View} from "react-native";
 
 const Navigator = () => {
     const {isLoadingAuthData, userToken} = useSelector(state => state.auth)
@@ -36,7 +37,7 @@ const Navigator = () => {
                 dispatch(setIsLoadingAuthData(false))
             }
         })();
-    }, []) //vede se l'utente è loggato
+    }, []) //vede se è presente un token nel dispositivo
 
     useEffect(()=>{
         (async () => {
@@ -56,7 +57,12 @@ const Navigator = () => {
 
     const Drawer = createDrawerNavigator();
     return <NavigationContainer>
-        <Drawer.Navigator initialRouteName='Home' screenOptions={{ title: '' }}
+        <Drawer.Navigator initialRouteName='Home' screenOptions={{ title: '', headerStyle: {height: 0}, header:  ()=>{
+                //nella view vanno le opzioni grafiche del bottone
+                return <View style={{position: 'absolute', right: 0, transform: [{scale: 1.5}, {translateY: 25}, {translateX: -10}]}}>
+                    <DrawerToggleButton />
+                </View>
+            }}}
                           drawerContent={(props) => {
                               return (
                                   <DrawerContentScrollView {...props} >
