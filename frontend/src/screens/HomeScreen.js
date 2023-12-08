@@ -13,6 +13,7 @@ const HomeScreen = ({ navigation }) => {
         <Image source={margherita_bg} style={{
             windth: '100%',
             height: '25%',
+            left: -250,
         }} />
         <View style={{
             height: '75%',
