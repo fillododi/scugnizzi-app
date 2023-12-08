@@ -22,22 +22,24 @@ export const restaurantScreenStyles = StyleSheet.create({
     restaurantscreen: {
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: '#fff',
+        backgroundColor: '#D32222',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
         height: '100%',
         width: '100%',
     },
 
     bookingButton: {
+        width: '66%',
+        height: '12.5%',
         display: 'flex',
         backgroundColor: 'orange',
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: '#000',
         borderWidth: 3,
-        borderRadius: 10,
         fontSize: 30,
+        fontWeight: 'bold',
     },
 
 

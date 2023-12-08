@@ -15,3 +15,5 @@ export const arrow_img = {
 export const menu_img = {
     margherita: require('../assets/img/margherita.jpg'),
 }
+
+export const margherita_bg = require('../assets/img/margherita_bg.jpg');
