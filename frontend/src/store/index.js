@@ -1,12 +1,16 @@
 import authReducer from './authSlice'
 import locationReducer from './locationSlice'
 import orderReducer from './orderSlice'
+import bookingReducer from './bookingSlice'
+import selectedRestaurantReducer from './selectedRestaurantSlice'
 import { configureStore } from '@reduxjs/toolkit'
 
 export default configureStore({
     reducer: {
         auth: authReducer,
         location: locationReducer,
-        order: orderReducer
+        order: orderReducer,
+        booking: bookingReducer,
+        selectedRestaurant: selectedRestaurantReducer
     },
 })

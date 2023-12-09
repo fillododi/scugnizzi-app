@@ -7,9 +7,6 @@ export const orderSlice = createSlice({
         time: null
     },
     reducers: {
-        createBooking: (state) => {
-            state.type = "BOOKING"
-        },
         createTakeoutOrder: (state) => {
             state.type = "TAKEOUT"
         },
@@ -22,5 +19,5 @@ export const orderSlice = createSlice({
     }
 })
 
-export const {createBooking, createTakeoutOrder, createDeliveryOrder, setOrderTime} = orderSlice.actions
+export const {createTakeoutOrder, createDeliveryOrder, setOrderTime} = orderSlice.actions
 export default orderSlice.reducer

@@ -1,11 +1,18 @@
 import { homeScreenStyles } from "../styles";
 import { Pressable, View, Image, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import {useDispatch} from "react-redux";
+import {setSelectedRestaurant} from "../store/selectedRestaurantSlice";
 
 
 export function ClickableRestaurant({ navigation, img_path, location, nome_sede, distanza, next_screen }) {
+    const dispatch = useDispatch()
+    const handlePress = () => {
+        dispatch(setSelectedRestaurant(nome_sede))
+        navigation.navigate(next_screen)
+    }
     return (
-        <Pressable onPress={() => navigation.navigate(next_screen, { nome_sede: nome_sede })}>
+        <Pressable onPress={handlePress}>
             <View style={homeScreenStyles.clickableRestaurant}>
                 <Image
                     style={{
