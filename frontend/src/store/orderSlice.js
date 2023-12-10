@@ -7,7 +7,8 @@ export const orderSlice = createSlice({
         time: null,
         name: null,
         phoneNumber: null,
-        email: null
+        email: null,
+        address: null
     },
     reducers: {
         createTakeoutOrder: (state) => {
@@ -27,9 +28,12 @@ export const orderSlice = createSlice({
         },
         setOrderEmail: (state, action) => {
             state.email = action.payload
+        },
+        setOrderAddress: (state, action) => {
+            state.address = action.payload
         }
     }
 })
 
-export const {createTakeoutOrder, createDeliveryOrder, setOrderTime, setOrderEmail, setOrderName, setOrderPhoneNumber} = orderSlice.actions
+export const {createTakeoutOrder, createDeliveryOrder, setOrderTime, setOrderEmail, setOrderName, setOrderPhoneNumber, setOrderAddress} = orderSlice.actions
 export default orderSlice.reducer
