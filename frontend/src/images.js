@@ -17,3 +17,7 @@ export const menu_img = {
 }
 
 export const margherita_bg = require('../assets/img/margherita_bg.jpg');
+
+export const pizza_ristorante = require('../assets/img/pizza_ristorante.jpg');
+
+export const pizza_home = require('../assets/img/pizza_home.jpg');

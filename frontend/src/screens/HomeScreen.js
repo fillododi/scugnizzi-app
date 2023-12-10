@@ -2,7 +2,7 @@ import { View, Text, Image } from "react-native";
 import { restaurantScreenStyles } from "../styles";
 import NewButton from "../components/NewButton";
 import { useSelector } from "react-redux";
-import { margherita_bg } from "../images";
+import { pizza_home, logo_img } from "../images";
 import Strip from "../components/Strip";
 
 
@@ -10,10 +10,24 @@ const HomeScreen = ({ navigation }) => {
     const { userToken } = useSelector(state => state.auth)
     return <View style={restaurantScreenStyles.restaurantscreen}>
 
-        <Image source={margherita_bg} style={{
-            windth: '100%',
+        <Image source={pizza_home} style={{
+            width: '100%',
             height: '25%',
-            left: -250,
+            zIndex: 0,
+
+        }} />
+
+        <Image source={logo_img} style={{
+            borderRadius: 100,
+            backgroundColor: '#fff',
+            borderWidth: 3,
+            borderColor: '#000',
+            resizeMode: 'contain',
+            width: (2 * 100 / 9).toString() + '%',
+            height: '10%',
+            position: 'absolute',
+            top: ((100 / 8) - 5).toString() + '%',
+            zIndex: 1,
         }} />
         <View style={{
             height: '75%',
@@ -22,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
             top: '-3.33%',
         }}>
 
-            <Strip text="COSA VUOI FARE?" />
+            <Strip text="PIZZERIA SCUGNIZZI" ridge='0' />
 
             <View style={{
                 height: '94.5%', width: '100%',
@@ -30,9 +44,9 @@ const HomeScreen = ({ navigation }) => {
                 justifyContent: 'space-evenly', alignItems: 'center',
 
             }}>
-                <NewButton title="PRENOTA" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'Booking' })} style={restaurantScreenStyles.bookingButton} />
-                <NewButton title="ASPORTO" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'TakeOut' })} style={restaurantScreenStyles.bookingButton} />
-                <NewButton title="DOMICILIO" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'Delivery' })} style={restaurantScreenStyles.bookingButton} />
+                <NewButton title="Prenota un tavolo" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'Booking' })} style={restaurantScreenStyles.bookingButton} />
+                <NewButton title="Asporto" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'TakeOut' })} style={restaurantScreenStyles.bookingButton} />
+                <NewButton title="Consegna a domicilio" onPress={() => navigation.navigate('RestaurantSelection', { nextScreen: 'Delivery' })} style={restaurantScreenStyles.bookingButton} />
                 {userToken && <NewButton title="Gestisci Prenotazioni" onPress={() => navigation.navigate('Orders')} style={restaurantScreenStyles.bookingButton} />}
             </View>
         </View>

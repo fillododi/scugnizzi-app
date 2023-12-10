@@ -1,16 +1,15 @@
 import { View, Text } from 'react-native'
 
 
-const Strip = ({ text }) => {
+const Strip = ({ text, ridge = 0 }) => {
     return <View style={{
         width: '100%',
         height: '10%',
         alignItems: 'center',
-        top: '-3%',
+        top: (-3 * ridge).toString() + '%',
     }}>
 
-
-        <View style={{
+        {ridge == 1 ? <View style={{
 
             borderTopLeftRadius: 50,
             borderTopRightRadius: 50,
@@ -28,7 +27,8 @@ const Strip = ({ text }) => {
             zIndex: 1,
             top: 3,
 
-        }} />
+        }} /> : null
+        }
         <View style={{
             backgroundColor: '#9E1A1A',
             height: '70%',
@@ -44,6 +44,7 @@ const Strip = ({ text }) => {
                 fontSize: 20,
                 fontWeight: 'bold',
                 color: '#000',
+                fontFamily: 'Thonburi',
 
             }}>{text}</Text>
         </View>

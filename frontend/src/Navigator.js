@@ -1,4 +1,4 @@
-import {createDrawerNavigator, DrawerContentScrollView, DrawerToggleButton} from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerToggleButton } from "@react-navigation/drawer";
 import SplashScreen from "./screens/SplashScreen";
 import DrawerMenu from "./components/DrawerMenu";
 import RestaurantSelectionScreen from "./screens/RestaurantSelectionScreen";
@@ -10,20 +10,20 @@ import DeliveryScreen from "./screens/DeliveryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
-import {NavigationContainer} from "@react-navigation/native";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setIsLoadingAuthData, setUserToken } from "./store/authSlice";
+import { setLocation } from "./store/locationSlice"
 
-import {setIsLoadingAuthData, setUserToken} from "./store/authSlice";
-import {setLocation} from "./store/locationSlice"
 
 import * as Location from 'expo-location';
 import OrdersManagementScreen from "./screens/OrdersManagementScreen";
 import DetailedOrderScreen from "./screens/DetailedOrderScreen";
-import {View} from "react-native";
+import { View } from "react-native";
 
 const Navigator = () => {
-    const {isLoadingAuthData, userToken} = useSelector(state => state.auth)
+    const { isLoadingAuthData, userToken } = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -39,11 +39,11 @@ const Navigator = () => {
         })();
     }, []) //vede se è presente un token nel dispositivo
 
-    useEffect(()=>{
+    useEffect(() => {
         (async () => {
             let permission = await Location.requestForegroundPermissionsAsync()
             let status = permission.status
-            if(status !== 'granted'){ //se l'utente non accetta i permessi
+            if (status !== 'granted') { //se l'utente non accetta i permessi
                 return
             }
             let position = await Location.getCurrentPositionAsync({})
@@ -55,21 +55,26 @@ const Navigator = () => {
         return <SplashScreen />
     }
 
+
+
+
     const Drawer = createDrawerNavigator();
     return <NavigationContainer>
-        <Drawer.Navigator initialRouteName='Home' screenOptions={{ title: '', headerStyle: {height: 0}, header:  ()=>{
+        <Drawer.Navigator initialRouteName='Home' screenOptions={{
+            title: '', headerStyle: { height: 0 }, header: () => {
                 //nella view vanno le opzioni grafiche del bottone
-                return <View style={{position: 'absolute', right: 0, transform: [{scale: 1.5}, {translateY: 25}, {translateX: -10}]}}>
+                return <View style={{ position: 'absolute', right: 0, transform: [{ scale: 1.5 }, { translateY: 25 }, { translateX: -10 }] }}>
                     <DrawerToggleButton />
                 </View>
-            }}}
-                          drawerContent={(props) => {
-                              return (
-                                  <DrawerContentScrollView {...props} >
-                                      <DrawerMenu navigation={props.navigation}/>
-                                  </DrawerContentScrollView>
-                              );
-                          }}>
+            }
+        }}
+            drawerContent={(props) => {
+                return (
+                    <DrawerContentScrollView {...props} >
+                        <DrawerMenu navigation={props.navigation} />
+                    </DrawerContentScrollView>
+                );
+            }}>
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="RestaurantSelection" component={RestaurantSelectionScreen} />
             <Drawer.Screen name="Booking" component={BookingScreen} />
@@ -85,8 +90,8 @@ const Navigator = () => {
                 </>
                 :
                 <>
-                    <Drawer.Screen name="SignIn" component={SignInScreen}/>
-                    <Drawer.Screen name="SignUp" component={SignUpScreen}/>
+                    <Drawer.Screen name="SignIn" component={SignInScreen} />
+                    <Drawer.Screen name="SignUp" component={SignUpScreen} />
                 </>
             }
         </Drawer.Navigator>
