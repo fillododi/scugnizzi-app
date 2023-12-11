@@ -9,11 +9,11 @@ const NewButton = ({ title, onPress, style = {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'center'
 } }) => {
     return (
         <Pressable onPress={onPress} style={style}>
-            <Text>{title}</Text>
+            <Text style={{fontFamily: 'Thonburi'}}>{title}</Text>
         </Pressable>
     );
 }

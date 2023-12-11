@@ -23,11 +23,13 @@ const DeliveryScreen = ({navigation}) => {
     const { selectedRestaurant: nome_sede } = useSelector(state => state.selectedRestaurant);
     const { time: selectedTime, name, email, phoneNumber} = useSelector(state => state.order)
     const { userToken } = useSelector(state => state.auth)
+
+
     return (
         <View>
             <Text>{nome_sede} - DELIVERY</Text>
             <Menu/>
-            <TextInput placeholder="Inserisci l'orario" value={selectedTime} onChangeText={()=>dispatch(setOrderTime())}/>
+            <TextInput placeholder="Inserisci l'orario" value={selectedTime} onChangeText={text=>dispatch(setOrderTime(text))}/>
             {!userToken?
                 <View>
                     <TextInput placeholder="Inserisci il nome" value={name} onChangeText={()=>dispatch(setOrderName())}/>
@@ -36,7 +38,9 @@ const DeliveryScreen = ({navigation}) => {
                 </View>
                 :
                 <View>
-                    {userAddresses.map(address => <NewButton title={address.street + '-' + address.city} onPress{()=>{dispatch(setOrderAddress(address))}}/>)}
+                    {userAddresses.map(address => <NewButton title={address.street + '-' + address.city} onPress={
+                        ()=>dispatch(setOrderAddress(address))
+                    }/>)}
                     <Text>Aggiungi un nuovo indirizzo</Text>
                     <TextInput placeholder="Inserisci la via" value={newAddress.street} onChangeText={(text)=> setNewAddress({...newAddress, street: text})}/>
                     <TextInput placeholder="Inserisci la città" value={newAddress.city} onChangeText={(text)=> setNewAddress({...newAddress, city: text})}/>

@@ -9,7 +9,7 @@ const Strip = ({ text, ridge = 0 }) => {
         top: (-3 * ridge).toString() + '%',
     }}>
 
-        {ridge == 1 ? <View style={{
+        {ridge === 1 ? <View style={{
 
             borderTopLeftRadius: 50,
             borderTopRightRadius: 50,
@@ -44,7 +44,7 @@ const Strip = ({ text, ridge = 0 }) => {
                 fontSize: 20,
                 fontWeight: 'bold',
                 color: '#000',
-                fontFamily: 'Thonburi',
+                fontFamily: 'Thonburi'
 
             }}>{text}</Text>
         </View>
