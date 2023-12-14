@@ -11,26 +11,24 @@ export const bookingSlice = createSlice({
         email: null
     },
     reducers: {
-        setPeopleAmount: (state, action) => {
-            state.peopleAmount = action.payload
+        createBooking: (state, action) => {
+            state.day = action.payload.day
+            state.time = action.payload.time
+            state.peopleAmount = action.payload.peopleAmount
+            state.name = action.payload.name
+            state.phoneNumber = action.payload.phoneNumber
+            state.email = action.payload.email
         },
-        setBookingDay: (state, action) => {
-            state.day = action.payload
-        },
-        setBookingTime: (state, action) => {
-            state.time = action.payload
-        },
-        setBookingName: (state, action) => {
-            state.name = action.payload
-        },
-        setBookingPhoneNumber: (state, action) => {
-            state.phoneNumber = action.payload
-        },
-        setBookingEmail: (state, action) => {
-            state.email = action.payload
+        resetBooking: (state) => {
+            state.day = null
+            state.time = null
+            state.peopleAmount = null
+            state.name = null
+            state.phoneNumber = null
+            state.email = null
         }
     }
 })
 
-export const {setPeopleAmount, setBookingDay, setBookingTime, setBookingEmail, setBookingName, setBookingPhoneNumber} = bookingSlice.actions
+export const {createBooking, resetBooking} = bookingSlice.actions
 export default bookingSlice.reducer
