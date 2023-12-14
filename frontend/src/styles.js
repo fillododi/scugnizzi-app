@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         flex: 1,
         padding: 40,
-        fontFamily: 'Thonburi'
+        //fontFamily: 'Thonburi'
     },
 
 })
@@ -28,7 +28,7 @@ export const restaurantScreenStyles = StyleSheet.create({
         justifyContent: 'flex-start',
         height: '100%',
         width: '100%',
-        fontFamily: 'Thonburi'
+        //fontFamily: 'Thonburi'
     },
 
     bookingButton: {
@@ -42,7 +42,7 @@ export const restaurantScreenStyles = StyleSheet.create({
         borderWidth: 3,
         fontSize: 30,
         fontWeight: 'bold',
-        fontFamily: 'Thonburi'
+        //fontFamily: 'Thonburi'
     },
 
 
@@ -56,7 +56,7 @@ export const restaurantScreenStyles = StyleSheet.create({
         borderBottomColor: '#000',
         borderBottomWidth: 3,
         borderRadius: 10,
-        fontFamily: 'Thonburi'
+        //fontFamily: 'Thonburi'
     }
 
 })
@@ -68,10 +68,10 @@ export const homeScreenStyles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: '#D32222',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        //justifyContent: 'space-evenly',
         height: '100%',
         width: '100%',
-        fontFamily: 'Thonburi'
+        //fontFamily: 'Thonburi'
     },
 
 
@@ -84,8 +84,8 @@ export const homeScreenStyles = StyleSheet.create({
         borderColor: '#000',
         borderWidth: 3,
         width: sWidth * 0.8,
-        height: sHeight / 4,
-        fontFamily: 'Thonburi'
+        height: sHeight / 5,
+        //fontFamily: 'Thonburi'
     },
 })
 

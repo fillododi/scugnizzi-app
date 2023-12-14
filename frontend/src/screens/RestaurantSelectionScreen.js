@@ -6,6 +6,7 @@ import { restaurant_img, margherita_bg } from "../images";
 import { BORGOFORTE_COORDINATES, BUSCOLDO_COORDINATES, MONTANARA_COORDINATES, calculateDistance } from "../utils/location";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
 
 
 const RestaurantSelectionScreen = ({ route, navigation }) => {
@@ -44,14 +45,14 @@ const RestaurantSelectionScreen = ({ route, navigation }) => {
     return (
 
         <View style={homeScreenStyles.homescreen}>
-
             <Image style={{
                 width: '100%',
-                height: '20%',
+                height: '25%',
             }}
-                source={margherita_bg} />
+                source={margherita_bg}
+            />
 
-            <Strip text="SCEGLI LA SEDE" />
+            <Strip text="SCEGLI LA SEDE" ridge="1" />
 
             {Object.values(restaurants).sort((res1, res2) => {
                 if (res1.distance > res2.distance) {

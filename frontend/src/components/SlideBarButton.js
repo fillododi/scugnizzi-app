@@ -1,10 +1,17 @@
 import { Pressable, Text, View, Image } from "react-native";
 
-const SlideBarButton = ({ onClick, text, image }) => {
+const SlideBarButton = ({ onPress, text, image }) => {
     return (
-        <Pressable onClick={onClick}>
-            <Text>{text}</Text>
-            <Image source={image} />
+        <Pressable onPress={onPress}>
+            <View style={{
+                borderColor: "#000",
+                borderTopWidth: 3,
+                borderBottomWidth: 3,
+                width: "100%"
+            }}>
+                <Text>{text}</Text>
+                <Image source={image} />
+            </View>
         </Pressable>
     );
 }
