@@ -1,7 +1,7 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const selectedRestaurantSlice = createSlice({
-    name: 'auth',
+    name: 'selectedRestaurant',
     initialState: {
         selectedRestaurant: null
     },
@@ -12,5 +12,5 @@ export const selectedRestaurantSlice = createSlice({
     }
 })
 
-export const {setSelectedRestaurant} = selectedRestaurantSlice.actions
+export const { setSelectedRestaurant } = selectedRestaurantSlice.actions
 export default selectedRestaurantSlice.reducer

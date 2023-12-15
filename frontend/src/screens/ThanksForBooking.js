@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import NewButton from '../components/NewButton';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const ThanksForBooking = ({ navigation }) => {
-    const {selectedRestaurant} = useSelector(state => state.selectedRestaurant)
-    const {day, time, peopleAmount, name, phoneNumber, email} = useSelector(state => state.booking)
+    const { selectedRestaurant } = useSelector(state => state.selectedRestaurant)
+    const { day, time, peopleAmount, name, phoneNumber, email } = useSelector(state => state.booking)
     return (
         <View>
             <Text>Thanks For Booking!</Text>

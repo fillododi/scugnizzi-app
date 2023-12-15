@@ -66,7 +66,7 @@ const Navigator = () => {
                 return <View style={{ position: 'absolute', right: 0, transform: [{ scale: 1.5 }, { translateY: 25 }, { translateX: -10 }] }}>
                     <DrawerToggleButton />
                 </View>
-            },
+            }, drawerStyle: { width: '100%' }
         }}
             drawerContent={(props) => {
                 return (
