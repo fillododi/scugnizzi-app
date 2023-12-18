@@ -13,7 +13,7 @@ const NewButton = ({ title, onPress, style = {
 } }) => {
     return (
         <Pressable onPress={onPress} style={style}>
-            <Text style={{fontFamily: 'Thonburi'}}>{title}</Text>
+            <Text style={{ fontFamily: 'Roboto' }}>{title}</Text>
         </Pressable>
     );
 }

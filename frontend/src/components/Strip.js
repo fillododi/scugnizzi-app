@@ -62,7 +62,7 @@ const Strip = ({ text, ridge = 0 }) => {
                 fontSize: 20,
                 fontWeight: 'bold',
                 color: '#000',
-                fontFamily: 'Thonburi'
+                fontFamily: 'Roboto'
 
             }}>{text}</Text>
         </View>

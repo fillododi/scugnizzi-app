@@ -1,9 +1,9 @@
 import * as Font from "expo-font";
 
 const useFonts = async () => {
-    //await Font.loadAsync({
-    //    'Thonburi': require('../../assets/fonts/Thonburi.otf'),
-    //});
+    await Font.loadAsync({
+        'Roboto': require('../../assets/fonts/Roboto-Regular.ttf'),
+    });
 }
 
 export default useFonts

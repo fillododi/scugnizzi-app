@@ -25,8 +25,7 @@ export function ClickableRestaurant({ navigation, img_path, location, nome_sede,
                         img_path
                     }
                 />
-                <Text style={{ fontFamily: 'Thonburi' }}>{nome_sede} {location} {distanza}km</Text>
-                <StatusBar style="auto" />
+                <Text style={{ fontFamily: 'Roboto' }}>{nome_sede} {location} {distanza}km</Text>
             </View>
 
         </Pressable>
