@@ -1,11 +1,11 @@
 import { Pressable, Text, View, Image } from "react-native";
 import { sHeight } from "../styles";
-import { map_pin } from "../images";
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 
-const SlideBarButton = ({ onPress, text, icon = "person-circle-outline" }) => {
+
+const SlideBarButton = ({ onPress, text, icon = "person" }) => {
     return (
         <Pressable onPress={onPress} style={{ width: "100%", height: (1 / 16) * sHeight }}>
             <View style={{
@@ -22,7 +22,7 @@ const SlideBarButton = ({ onPress, text, icon = "person-circle-outline" }) => {
                     <Icon name={icon} color="#000" size={(1 / 16) * sHeight} />
                     <Text>{text}</Text>
                 </View>
-                <Icon name="chevron-forward-outline" color="#000" size={(1 / 16) * sHeight} />
+                <Icon name="chevron-right" color="#000" size={(1 / 16) * sHeight} />
             </View>
         </Pressable >
     );

@@ -59,12 +59,12 @@ const DrawerMenu = ({ navigation }) => {
                     }}>
                         <Text style={{ height: sHeight * 3 / 32, fontWeight: "bold" }}>Account</Text>
                         <SlideBarButton text="Le mie informazioni" onPress={() => navigation.navigate("Profile")} />
-                        <SlideBarButton text="Prenotazioni" onPress={() => navigation.navigate("Home")} />
-                        <SlideBarButton text="Ordini" onPress={() => navigation.navigate("Home")} />
-                        <SlideBarButton text="Metodi di pagamento" onPress={() => navigation.navigate("Home")} />
-                        <SlideBarButton text="Indirizzi" onPress={() => navigation.navigate("Home")} />
-                        <SlideBarButton text="Esci" onPress={() => dispatch(setUserToken(null))} />
-                        <SlideBarButton text="Home" onPress={() => navigation.navigate("Home")} />
+                        <SlideBarButton text="Prenotazioni" icon="calendar-today" onPress={() => navigation.navigate("Home")} />
+                        <SlideBarButton text="Ordini" icon="shopping-bag" onPress={() => navigation.navigate("Home")} />
+                        <SlideBarButton text="Metodi di pagamento" icon="payment" onPress={() => navigation.navigate("Home")} />
+                        <SlideBarButton text="Indirizzi" icon="house" onPress={() => navigation.navigate("Home")} />
+                        <SlideBarButton text="Esci" icon="exit-to-app" onPress={() => dispatch(setUserToken(null))} />
+                        <SlideBarButton text="Home" icon="home" onPress={() => navigation.navigate("Home")} />
                     </View>
                 </View>
             </>
