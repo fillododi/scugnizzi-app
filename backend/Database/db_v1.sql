@@ -5,15 +5,15 @@ GRANT db_admin TO admin_user;
 CREATE TABLE Admin_Users(
     AdminID INT PRIMARY KEY,  
     RestaurantID INT,
-    FirstName NVARCHAR(255),
-    LastName NVARCHAR(255),
+    Name NVARCHAR(255),
+    Surname NVARCHAR(255),
     admin_useraname NVARCHAR(255),
     LoggedIn DATETIME,
     LoggedOut DATETIME
 );
 
 
-CREATE TABLE Ristoranti(
+CREATE TABLE Restaurants(
     RestaurantID INT PRIMARY KEY,
     RestaurantName NVARCHAR(255),
     AdminIDs INT, 
@@ -23,10 +23,11 @@ CREATE TABLE Ristoranti(
     CapienzaMax INT
 );
 
-CREATE TABLE Planimetrie(
+CREATE TABLE Plant(
     PlanimetriaID INT PRIMARY KEY,
     RestaurantID INT,
-    Seats_Number INT
+    Seats_Number INT, 
+    CapienzaMax INT
 );
 
 CREATE TABLE Common_User(
@@ -66,14 +67,14 @@ CREATE TABLE Take_Away(
     Total_Price DECIMAL(6,2),
     Accepted BOOLEAN,
     Delivery BOOLEAN,
-    Addizionale_consegna DECIMAL(6,2)
+    delivery_fee DECIMAL(6,2)
 );
 
-CREATE TABLE Macro_Prodotti(
+CREATE TABLE Menu_Items(
     ProductID INT PRIMARY KEY,
     AdditionID INT, 
     Product_Name NVARCHAR(255),
-    Allergeni NVARCHAR(255),
+    Allergen NVARCHAR(255),
     RestaurantID INT,
     Product_Price DECIMAL(6,2),
     Disponibile BOOLEAN,
@@ -81,13 +82,26 @@ CREATE TABLE Macro_Prodotti(
     tempo_Preparazione DATETIME 
 );
 
-CREATE TABLE Modifica_Prodotti(
+CREATE TABLE Additional_Items(
     AdditionID INT PRIMARY KEY, 
     Addition_Name NVARCHAR(255),
-    Allergeni NVARCHAR(255),
+    AllergenID NVARCHAR(255),
     RestaurantID INT,
     Addition_Price DECIMAL(6,2),
     Disponibile BOOLEAN,
+);
+
+CREATE TABLE Allergens(
+    AllergenID INT PRIMARY KEY,
+    Description NVARCHAR(255),
+    );
+
+-- Riders?
+
+CREATE TABLE Riders(
+    RiderID INT PRIMARY KEY, 
+    Rider_Review NVARCHAR(255), 
+    Rider_Review_Score INT, 
 );
 
 
